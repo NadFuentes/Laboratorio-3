@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 //Hacemos la clase base de "Empleado"
 class Empleado{
@@ -62,5 +63,39 @@ class EmpleadoTemporal extends Empleado{
         return super.mostrarLaInformación() + "\nFecha Final del contrato: "+ sdf.format(FechaFinalContrato.getTime());
     }
 }
+//Subclase para las ventas del empleado
+class EmpleadoVentas extends Empleado{
+    private double[] ventasMensuales;
+    private double TasaDeComision;
+    public EmpleadoVentas (int codigo, String nombre, double salarioBase, double TasaDeComision){
+        super(codigo, nombre, salarioBase);
+        this.TasaDeComision = TasaDeComision;
+        this.ventasMensuales = new double[12]; //Esto para inicializar las ventas en 0
+        Arrays.fill(this.ventasMensuales,0.0);
+    }
+    public void registrarVenta(double monto){
+        int mesActual = Calendar.getInstance().get(Calendar.MONTH);
+        this.ventasMensuales[mesActual]+= monto;
+    }
+    public double calcularLaComision(){
+        int mesActual = Calendar.getInstance().get(Calendar.MONTH);
+        return this.ventasMensuales[mesActual]*this.TasaDeComision;
+    }
+    public double calcularPago(){
+        double salarioProporcional = (salarioBase/160)*horasTrabajadas;
+        return (salarioProporcional *0.0965)+calcularLaComision(); //Este es el salario base mas la comision
+    }
+    public double calcularLasVentasAnuales(){
+        double totalVentas = 0;
+        for (double venta : ventasMensuales){
+            totalVentas +=venta;
+        }
+        return totalVentas;
+    }
+    public String mostrarInformación(){
+        return super.mostrarLaInformación()+"\nVentas Anuales: "+ calcularLasVentasAnuales();
+        }
+}
+
 
 
