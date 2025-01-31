@@ -50,8 +50,10 @@ class EmpleadoTemporal extends Empleado{
         if(hoy.before(FechaFinalContrato) || hoy.equals(FechaFinalContrato)){
            double salarioProporcional = (salarioBase/168)*horasTrabajadas;
            return salarioProporcional*0.965; //Para deducir el 3.5%
-           
+         }else{
+            return 0; //Va retonar 0 si el contrato a expirado el tiempo estimado
         }
     }
+    
 }
 
