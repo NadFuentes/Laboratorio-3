@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 class Empleado{
     protected int codigo;
     protected String nombre;
-    protected Calendar FechaDeContratación;
+    protected Calendar FechaDeContratacion;
     protected double salarioBase;
     protected int horasTrabajadas;
     
@@ -15,13 +15,18 @@ class Empleado{
         this.nombre = nombre;
         this.salarioBase = salarioBase;
         this.horasTrabajadas = 0;
-        this.FechaDeContratación = Calendar.getInstance();
+        this.FechaDeContratacion = Calendar.getInstance();
     }
     public void registroHorasTrabajadas(int horas){
         this.horasTrabajadas += horas;
     }
     
     public double calculoPago(){
-        double salario
+        double salarioProporcional =(salarioBase/160)*horasTrabajadas;
+        return salarioProporcional*0.965; //Esto para deducir el 3.5%
+    }
+    public String mostrarLaInformación(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return "Codigo: "+ codigo +"\nNombre: " + nombre +"\nFecha de contratación: "+ sdf.format(FechaDeContratacion.getTime());
     }
 }
