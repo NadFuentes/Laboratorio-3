@@ -30,3 +30,28 @@ class Empleado{
         return "Codigo: "+ codigo +"\nNombre: " + nombre +"\nFecha de contratación: "+ sdf.format(FechaDeContratacion.getTime());
     }
 }
+//La subclase para el empleado estándar
+class EmpleadoEstandar extends Empleado{
+    public EmpleadoEstandar(int codigo, String nombre, double salarioBase){
+    super(codigo, nombre, salarioBase);
+ }
+}
+
+//La subclase para el empleado temporal
+class EmpleadoTemporal extends Empleado{
+    private Calendar FechaFinalContrato;
+    
+    public EmpleadoTemporal(int codigo, String nombre, double salarioBase){
+        super(codigo, nombre, salarioBase);
+        this.FechaFinalContrato =FechaFinalContrato;
+    }
+    public double calcularPago(){
+        Calendar hoy = Calendar.getInstance();
+        if(hoy.before(FechaFinalContrato) || hoy.equals(FechaFinalContrato)){
+           double salarioProporcional = (salarioBase/168)*horasTrabajadas;
+           return salarioProporcional*0.965; //Para deducir el 3.5%
+           
+        }
+    }
+}
+
