@@ -47,6 +47,8 @@ class EmpleadoEstandar extends Empleado{
     public EmpleadoEstandar(int codigo, String nombre, double salarioBase){
     super(codigo, nombre, salarioBase);
  }
+
+    
 }
 
 //La subclase para el empleado temporal
@@ -69,9 +71,11 @@ class EmpleadoTemporal extends Empleado{
     public void actualizarFechaFinalContrato(Calendar nuevaFecha){
         this.FechaFinalContrato = nuevaFecha;
     }
-    public String mostrarInformación(){
+    
+    String mostrarInformacion() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return super.mostrarLaInformación() + "\nFecha Final del contrato: "+ sdf.format(FechaFinalContrato.getTime());
+        
     }
 }
 //Subclase para las ventas del empleado

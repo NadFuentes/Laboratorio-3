@@ -4,6 +4,8 @@
  */
 package lab.pkg3;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author chung
@@ -14,7 +16,5 @@ public class Lab3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+        
+       }}
