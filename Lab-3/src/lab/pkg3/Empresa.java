@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
  */
 public class Empresa {
     
-    
     protected String codigo;
     protected String nombre;
     protected double horasTrabajadas;
