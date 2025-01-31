@@ -14,6 +14,14 @@ class Empleado{
         this.codigo = codigo;
         this.nombre = nombre;
         this.salarioBase = salarioBase;
-        
+        this.horasTrabajadas = 0;
+        this.FechaDeContratación = Calendar.getInstance();
+    }
+    public void registroHorasTrabajadas(int horas){
+        this.horasTrabajadas += horas;
+    }
+    
+    public double calculoPago(){
+        double salario
     }
 }
