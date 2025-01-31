@@ -54,6 +54,13 @@ class EmpleadoTemporal extends Empleado{
             return 0; //Va retonar 0 si el contrato a expirado el tiempo estimado
         }
     }
-    
+    public void actualizarFechaFinalContrato(Calendar nuevaFecha){
+        this.FechaFinalContrato = nuevaFecha;
+    }
+    public String mostrarInformación(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return super.mostrarLaInformación() + "\nFecha Final del contrato: "+ sdf.format(FechaFinalContrato.getTime());
+    }
 }
+
 
